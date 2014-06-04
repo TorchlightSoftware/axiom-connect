@@ -25,7 +25,7 @@ module.exports =
 
     prefix: 'default'
 
-  attachments:
+  extends:
     'run/load': ['server.run/load']
     'run/unload': ['server.run/unload']
 

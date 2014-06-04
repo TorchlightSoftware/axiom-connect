@@ -13,7 +13,7 @@ module.exports = (err) ->
   {includeDetails, includeStack, includeMessage} = _.defaults options, defaults
 
   # statusCode mapping
-  if (err instanceof @errors.NoRespondersError)
+  if (err instanceof @errorTypes.NoRespondersError)
     statusCode = 404
 
   else if (err instanceof NoRouteError)

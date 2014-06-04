@@ -12,7 +12,7 @@ module.exports =
     redirectServer = null
 
     finished = (err) =>
-      @axiom.log.info "Started server on port #{@config.port}."
+      @log.info "Started server on port #{@config.port}."
       done err, {server, redirectServer}
 
     if @config.ssl

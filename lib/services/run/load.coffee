@@ -26,7 +26,7 @@ module.exports =
 
     # run any additional middleware that the consumer would like
     try
-      middleware = @retriever.retrieve('middleware')
+      middleware = @retrieve('middleware')
 
     middleware?(app)
 
@@ -61,7 +61,7 @@ module.exports =
 
       # connect to message bus
       location = "#{@config.prefix}/#{serviceName}"
-      @axiom.request location, args, (err, result) =>
+      @request location, args, (err, result) =>
 
         if err?
           response = getErrorBody.call @, err
@@ -75,5 +75,5 @@ module.exports =
 
         send response
 
-    @axiom.request 'startServer', {app}, (err, {server, redirectServer}) ->
+    @request 'startServer', {app}, (err, {server, redirectServer}) ->
       done err, {app, server, redirectServer}
