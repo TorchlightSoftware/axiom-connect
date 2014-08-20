@@ -24,10 +24,11 @@ module.exports =
     static: ['public']
 
     prefix: 'default'
+    middlewareLocation: 'middleware'
 
   extends:
-    'run/load': ['server.run/load']
-    'run/unload': ['server.run/unload']
+    'load': ['server.run/load']
+    'unload': ['server.run/unload']
 
   # Services used by the extension
   services: law.load rel('services')

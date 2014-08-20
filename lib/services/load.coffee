@@ -2,10 +2,10 @@ connect = require 'connect'
 _ = require 'lodash'
 logger = require 'torch'
 
-getErrorBody = require '../../helpers/getErrorBody'
-makeRouter = require '../../helpers/makeRouter'
-makeResource = require '../../helpers/makeResource'
-{NoRouteError} = require '../../helpers/errors'
+getErrorBody = require '../helpers/getErrorBody'
+makeRouter = require '../helpers/makeRouter'
+makeResource = require '../helpers/makeResource'
+{NoRouteError} = require '../helpers/errors'
 
 module.exports =
   service: (args, done) ->

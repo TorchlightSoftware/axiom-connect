@@ -53,6 +53,8 @@ describe 'run', ->
       # Then the data from the responder should be received
       should.not.exist err
       should.exist body
+      logger.red body unless res.statusCode is 200
+      res.statusCode.should.eql 200
 
       # why doesn't this get auto-parsed?  am I missing a header?
       body.should.eql '{special: true}'
