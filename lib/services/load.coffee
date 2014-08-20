@@ -26,7 +26,7 @@ module.exports =
 
     # run any additional middleware that the consumer would like
     try
-      middleware = @retrieve('middleware')
+      middleware = @retrieve(@config.middlewareLocation)
 
     middleware?(app)
 
