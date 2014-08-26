@@ -26,7 +26,7 @@ describe 'run', ->
   it 'should start the server', (done) ->
 
     # Given a responder exists
-    axiom.respond 'connect.default/hello', (args, fin) ->
+    axiom.respond 'connect.routes/hello', (args, fin) ->
       fin null, {greeting: 'hello, world'}
 
     # When a request is sent
@@ -86,6 +86,6 @@ describe 'run', ->
       should.not.exist err
       res.statusCode.should.eql 404
       should.exist body
-      body.message.should.eql "No responders for request: 'connect.default/noservice'"
+      body.message.should.eql "No responders for request: 'connect.routes/noservice'"
 
       done()

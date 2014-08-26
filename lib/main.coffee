@@ -6,6 +6,7 @@ rel = (args...) -> join __dirname, args...
 
 module.exports =
   config:
+    url: 'http://localhost:4000'
     port: 4000
     ssl: false
     paths:
@@ -23,12 +24,11 @@ module.exports =
 
     static: ['public']
 
-    prefix: 'default'
     middlewareLocation: 'middleware'
 
   extends:
-    'load': ['server.run/load']
-    'unload': ['server.run/unload']
+    'load': ['server.run/load', 'server.test/load']
+    'unload': ['server.run/unload', 'server.test/unload']
 
   # Services used by the extension
   services: law.load rel('services')

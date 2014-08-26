@@ -1,6 +1,5 @@
 connect = require 'connect'
 _ = require 'lodash'
-logger = require 'torch'
 
 getErrorBody = require '../helpers/getErrorBody'
 makeRouter = require '../helpers/makeRouter'
@@ -47,7 +46,7 @@ module.exports =
 
     # respond to requests
     app.use (req, res, next) =>
-      send = ({statusCode, responseBody}) ->
+      send = ({responseBody, statusCode}) ->
         contentType = 'application/json'
         res.writeHead statusCode, contentType
         res.end (JSON.stringify responseBody)
@@ -60,7 +59,7 @@ module.exports =
       args = _.merge {}, body, cookies, query, params
 
       # connect to message bus
-      location = "#{@config.prefix}/#{serviceName}"
+      location = "routes/#{serviceName}"
       @request location, args, (err, result) =>
 
         if err?
