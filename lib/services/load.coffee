@@ -10,18 +10,17 @@ module.exports =
   service: (args, done) ->
 
     app = connect()
-    app.use (req, res, next) ->
-      res.setHeader "Access-Control-Allow-Origin", "*"
-      next()
-    app.use connect.compress()
-    app.use connect.responseTime()
-    app.use connect.favicon()
-    app.use connect.query()
-    app.use connect.cookieParser()
-    app.use connect.static @config.paths.public
 
-    app.use connect.urlencoded()
-    app.use connect.json()
+    if @config.allowAllOrigins
+      app.use (req, res, next) ->
+        res.setHeader "Access-Control-Allow-Origin", "*"
+        next()
+
+    for opt in @config.options
+      app.use connect[opt]()
+
+    for path in @config.staticLocations
+      app.use connect.static(path)
 
     # run any additional middleware that the consumer would like
     try

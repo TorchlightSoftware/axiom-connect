@@ -9,10 +9,8 @@ module.exports =
     url: 'http://localhost:4000'
     port: 4000
     ssl: false
-    paths:
-      public: rel '..', 'public'
 
-    allowAll: true
+    allowAllOrigins: true
     options: [
       'compress'
       'responseTime'
@@ -20,10 +18,11 @@ module.exports =
       'staticCache'
       'query'
       'cookieParser'
+      'urlencoded'
+      'json'
     ]
 
-    static: ['public']
-
+    staticLocations: []
     middlewareLocation: 'middleware'
 
   extends:

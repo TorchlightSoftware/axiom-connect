@@ -89,3 +89,18 @@ describe 'run', ->
       body.message.should.eql "No responders for request: 'connect.routes/noservice'"
 
       done()
+
+  it 'should respond with static page', (done) ->
+    request {
+      url: "http://localhost:#{port}/index.html"
+      json: true
+
+    }, (err, res, body) ->
+
+      # Then a 200 should be received
+      should.not.exist err
+      res.statusCode.should.eql 200
+      should.exist body
+      body.should.include "Welcome!"
+
+      done()

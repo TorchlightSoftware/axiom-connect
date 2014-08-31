@@ -1,4 +1,8 @@
-module.exports =
+module.exports = ->
+
+  staticLocations: [
+    @rel 'domain/app/public'
+  ]
 
   routes: [
       path: '/hello'
