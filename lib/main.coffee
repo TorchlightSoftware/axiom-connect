@@ -15,7 +15,6 @@ module.exports =
       'compress'
       'responseTime'
       'favicon'
-      'staticCache'
       'query'
       'cookieParser'
       'urlencoded'

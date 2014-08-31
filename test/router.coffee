@@ -22,7 +22,7 @@ describe 'makeRouter', ->
     rtr = makeRouter routes
     m = rtr.match '/something'
     should.exist m, 'expected match'
-    m.should.include
+    m.should.containDeep
       params: {}
       splats: []
       route: '/something'
@@ -30,7 +30,7 @@ describe 'makeRouter', ->
 
     m2 = rtr.match '/something/5'
     should.exist m2, 'expected match 2'
-    m2.should.include
+    m2.should.containDeep
       params: {id: 5}
       splats: []
       route: '/something/:id'

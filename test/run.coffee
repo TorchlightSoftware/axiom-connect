@@ -101,6 +101,6 @@ describe 'run', ->
       should.not.exist err
       res.statusCode.should.eql 200
       should.exist body
-      body.should.include "Welcome!"
+      body.should.containEql "Welcome!"
 
       done()
