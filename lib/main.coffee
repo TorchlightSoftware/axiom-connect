@@ -24,6 +24,8 @@ module.exports =
     staticLocations: []
     middlewareLocation: 'middleware'
 
+    routes: []
+
   extends:
     'load': ['server.run/load', 'server.test/load']
     'unload': ['server.run/unload', 'server.test/unload']

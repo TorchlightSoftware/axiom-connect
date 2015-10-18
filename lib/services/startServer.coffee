@@ -1,5 +1,6 @@
 {join} = require 'path'
 fs = require 'fs'
+_ = require 'lodash'
 
 http = require 'http'
 https = require 'https'
@@ -11,7 +12,7 @@ module.exports =
     server = null
     redirectServer = null
 
-    finished = (err) =>
+    finished = _.once (err) =>
       @log.info "Started server on port #{@config.port}."
       done err, {server, redirectServer}
 
@@ -39,3 +40,5 @@ module.exports =
 
     else
       server = http.createServer(app).listen @config.port, finished
+      server.on 'error', (e) =>
+        finished new Error "Failed to start server on port: #{@config.port}\n#{e.stack}"

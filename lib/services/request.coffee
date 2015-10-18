@@ -3,8 +3,10 @@ request = require 'request'
 
 module.exports =
   required: ['method', 'path']
-  service: ({method, path, body}, done) ->
+  optional: ['body', 'expectedStatus']
+  service: ({method, path, body, expectedStatus}, done) ->
     uri = "#{@config.url}/#{path}"
+    expectedStatus or= 200
 
     options = {
       method, uri
@@ -27,5 +29,11 @@ module.exports =
           body = JSON.parse body
         catch e
           err = new Error 'Expected response body to be json.  Got:\n', body
+          return done(err)
+
+      unless res.statusCode is expectedStatus
+        @log.warning 'Body for response failure:\n', body
+        err = new Error "Expected response status to be #{expectedStatus}.  Got: #{res.statusCode}."
+        return done(err)
 
       done err, {res, body}

@@ -2,8 +2,8 @@
   "name": "axiom-connect",
   "description": "Axiom Connect extension.",
   "version": "0.0.6",
-  "homepage": "",
-  "repository": "",
+  "homepage": "https://github.com/torchlightsoftware/axiom-connect",
+  "repository": "https://github.com/torchlightsoftware/axiom-connect",
   "author": "Torchlight Software <info@torchlightsoftware.com> (http://torchlightsoftware.com)",
   "main": "./index.js",
   "dependencies": {
